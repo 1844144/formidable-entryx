@@ -38,7 +38,7 @@ function do_entry_x($new_content, $entry, $shortcodes, $display, $show, $odd, $a
         $array = preg_match('/\[entry_x[\ ]*\](.*)\[\/entry_x\]/', $sub, $mat);
 
         // split content - then we will get substitutions and total count
-        $substitutions = split('\$', $mat[1]);
+        $substitutions = explode('$', $mat[1]);
         $subs_count = count($substitutions);
 
 
