@@ -21,35 +21,34 @@ function do_entry_x($new_content, $entry, $shortcodes, $display, $show, $odd, $a
 
     $entryx = '[/entry_x]';
 
-    $new_content = preg_replace('/\[\/entry_x\ +\]/', '[/entry_x]', $new_content);
+    // $new_content = preg_replace('/\[\/entry_x\ +\]/', '[/entry_x]', $new_content);
 
-    $start = 0;
-    $my = '';
-    while (True) {
-        $pos = strpos($new_content, $entryx);
-        if (!$pos) break;
+    // $start = 0;
+    // $my = '';
+    // while (True) {
+    //     $pos = strpos($new_content, $entryx);
+    //     if (!$pos) break;
 
 
 
-        // now get substring and process it
-        $sub = substr($new_content, 0, $pos+strlen($entryx));
-        $array = preg_match('/\[entry_x\ *(\d+)\ *\](.*)\[\/entry_x\]/', $sub, $mat);
-            
-        if ($array) {
-            $xx = $mat[1];
-            $sc_content = '';
-            
-            if ($atts['count'] % $xx == 0) {
-                $sc_content = $mat[2];
-            }
-            $sub = preg_replace( '/(\[entry_x.*\[\/entry_x\])/', $sc_content, $sub);
+    //     // now get substring and process it
+    //     $sub = substr($new_content, 0, $pos+strlen($entryx));
+    //     $array = preg_match('/\[entry_x[\ ]*\](.*)\[\/entry_x\]/', $sub, $mat);
 
-            // now glue new sub and old content
-            $new_content = $sub. substr($new_content, $pos+strlen($entryx));
-        }
+    //     // split content - then we will get substitutions and total count
+    //     $substitutions = split('$', $mat[1]);
+    //     $subs_count = count($substitutions);
 
-    }
-    evar_dump($new_content);
+
+    //             $sc_content = $substitutions[ ($atts['count']-1) % $subs_count ] ;
+                
+    //             $sub = preg_replace( '/(\[entry_x.*\[\/entry_x\])/', $sc_content, $sub);
+
+    //             // now glue new sub and old content
+    //             $new_content = $sub. substr($new_content, $pos+strlen($entryx));
+
+    // }
+    // evar_dump($new_content);
     return $new_content;
 
 }
@@ -65,7 +64,7 @@ class EntryxController{
 
 
     public static function load_hooks(){
-        add_filter('frm_display_entry_content', 'do_entry_x', 20, 7);
+        // add_filter('frm_display_entry_content', 'do_entry_x', 20, 7);
 
 
 
